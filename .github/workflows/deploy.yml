@@ -26,4 +26,5 @@ jobs:
           aws cloudformation deploy \
             --template-file s3-bucket.yaml \
             --stack-name my-s3-bucket-stack \
+            --region af-south-1
             
