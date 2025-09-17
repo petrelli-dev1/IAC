@@ -14,7 +14,7 @@ jobs:
       
       - name: Install cfn-guard
         run: |
-          wget https://github.com/aws-cloudformation/cloudformation-guard/releases/download/v2.2.0/cfn-guard-linux-x64-v2.2.0 -O cfn-guard
+          wget //github.com/aws-cloudformation/cloudformation-guard/releases/download/v3.1.2/cfn-guard-linux-x86_64-v3.1.2 -O cfn-guard
           chmod +x cfn-guard
           sudo mv cfn-guard /usr/local/bin/
           cfn-guard --version
