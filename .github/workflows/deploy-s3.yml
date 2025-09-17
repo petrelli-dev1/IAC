@@ -14,7 +14,11 @@ jobs:
       
       - name: Install cfn-guard
         run: |
-          brew install cloudformation-guard
+          wget https://github.com/aws-cloudformation/cloudformation-guard/releases/download/v2.2.0/cfn-guard-linux-x64-v2.2.0 -O cfn-guard
+          chmod +x cfn-guard
+          sudo mv cfn-guard /usr/local/bin/
+          cfn-guard --version
+
       - name: Validate CloudFormation template
         run: |
           cfn-guard validate --rules s3-encryption.guard --template s3-bucket.yml
