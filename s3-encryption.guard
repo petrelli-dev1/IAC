@@ -1,0 +1,6 @@
+# s3-encryption.guard
+rule s3_bucket_encryption {
+    let encrypted = true
+    resource_type == "AWS::S3::Bucket" &&
+    properties.BucketEncryption != null
+}
