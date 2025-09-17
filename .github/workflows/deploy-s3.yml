@@ -27,7 +27,7 @@ jobs:
 
       - name: Validate CloudFormation template
         run: |
-          cfn-guard validate --rules s3-encryption.guard --template s3-bucket.yml
+          cfn-guard validate --rules s3-encryption.guard --payload s3-bucket.yml
 
 
       - name: Configure AWS credentials (from secrets)
