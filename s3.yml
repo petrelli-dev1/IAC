@@ -13,9 +13,9 @@ Resources:
         IgnorePublicAcls: true
         RestrictPublicBuckets: true
       # BucketEncryption:
-      #   ServerSideEncryptionConfiguration:
-      #     - ServerSideEncryptionByDefault:
-      #         SSEAlgorithm: AES256
+      #     ServerSideEncryptionConfiguration:
+      #       - ServerSideEncryptionByDefault:
+      #           SSEAlgorithm: AES256
 
 
    
