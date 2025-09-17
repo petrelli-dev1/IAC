@@ -4,7 +4,7 @@ Resources:
   IacS3Bucket:
     Type: AWS::S3::Bucket
     Properties:
-      Name: test-petnan
+      BucketName: test-petnan
       VersioningConfiguration:
         Status: Enabled
       PublicAccessBlockConfiguration:
