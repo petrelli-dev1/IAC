@@ -14,10 +14,8 @@ jobs:
       
       - name: Install CloudFormation Guard (latest)
         run: |
-          LATEST=$(curl -s https://api.github.com/repos/aws-cloudformation/cloudformation-guard/releases/latest \
-            | grep "browser_download_url" \
-            | grep "linux-x86_64" \
-            | cut -d '"' -f 4)
+          LATEST=$(curl -s https://api.github.com/repos/aws-cloudformation/cloudformation-guard/releases/latest | grep "browser_download_url" | grep "linux-x86_64" | cut -d '"' -f 4)
+          echo "Downloading $LATEST"
           curl -L $LATEST -o cfn-guard
           chmod +x cfn-guard
           sudo mv cfn-guard /usr/local/bin/
@@ -43,3 +41,5 @@ jobs:
             --template-file s3.yml \
             --stack-name iac-s3-bucket \
             --no-fail-on-empty-changeset
+      
+
