@@ -17,7 +17,5 @@ Resources:
           - ServerSideEncryptionByDefault:
               SSEAlgorithm: AES256
 
-Outputs:
-  BucketName:
-    Description: Name of the created bucket
+
    
