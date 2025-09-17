@@ -12,20 +12,17 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
       
+      - name: Install Rust
+        run: |
+          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+          source $HOME/.cargo/env
+
+
       - name: Install CloudFormation Guard
         run: |
-          # Download the latest stable Linux binary (v3.1.12 as example)
-          curl -Lo cfn-guard https://github.com/aws-cloudformation/cloudformation-guard/releases/download/v3.1.12/cfn-guard-linux-x86_64-v3.1.12
-
-          # Make it executable
-          chmod +x cfn-guard
-
-          # Move to PATH so we can use it in later steps
-          sudo mv cfn-guard /usr/local/bin/
-
-          # Verify installation
+          source $HOME/.cargo/env
+          cargo install cfn-guard
           cfn-guard --version
-
 
 
       - name: Validate CloudFormation template
