@@ -14,18 +14,18 @@ jobs:
       
       - name: Install CloudFormation Guard
         run: |
-          # Install Linuxbrew if not installed
+          # Install Linuxbrew
           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     
-          # Add Homebrew to PATH
-          echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> $GITHUB_ENV
-          eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-    
+          # Add Linuxbrew to PATH explicitly for the workflow
+          echo "/home/linuxbrew/.linuxbrew/bin" >> $GITHUB_PATH
+
           # Install CloudFormation Guard
-            brew install cloudformation-guard
-    
+          brew install cloudformation-guard
+
           # Verify installation
           cfn-guard --version
+
 
 
 
