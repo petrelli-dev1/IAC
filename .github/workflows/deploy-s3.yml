@@ -12,14 +12,21 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
       
-      - name: Install CloudFormation Guard (latest)
+      - name: Install CloudFormation Guard
         run: |
-          LATEST=$(curl -s https://api.github.com/repos/aws-cloudformation/cloudformation-guard/releases/latest | grep "browser_download_url" | grep "linux-x86_64" | cut -d '"' -f 4)
-          echo "Downloading $LATEST"
-          curl -L $LATEST -o cfn-guard
-          chmod +x cfn-guard
-          sudo mv cfn-guard /usr/local/bin/
+          # Install Linuxbrew if not installed
+          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    
+          # Add Homebrew to PATH
+          echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> $GITHUB_ENV
+          eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+    
+          # Install CloudFormation Guard
+            brew install cloudformation-guard
+    
+          # Verify installation
           cfn-guard --version
+
 
 
       - name: Validate CloudFormation template
